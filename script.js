@@ -1,4 +1,5 @@
-const SURVEY_URL = "https://forms.gle/REPLACE_WITH_MEDISURE_FORM_LINK";
+const PUBLIC_SURVEY_URL = "https://tally.so/r/xXvZYJ";
+const INDUSTRY_SURVEY_URL = "https://tally.so/r/xXvXKE";
 
 const preloader = document.getElementById("preloader");
 const siteHeader = document.getElementById("siteHeader");
@@ -8,8 +9,14 @@ const timeline = document.getElementById("timeline");
 const timelineProgress = document.getElementById("timelineProgress");
 const statsSection = document.getElementById("stats");
 
-document.querySelectorAll(".survey-link").forEach((link) => {
-  link.href = SURVEY_URL;
+document.querySelectorAll(".public-survey-link").forEach((link) => {
+  link.href = PUBLIC_SURVEY_URL;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+});
+
+document.querySelectorAll(".industry-survey-link").forEach((link) => {
+  link.href = INDUSTRY_SURVEY_URL;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
 });

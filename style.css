@@ -51,6 +51,12 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.55);
+  outline-offset: 4px;
+}
+
 p {
   color: var(--gray);
   line-height: 1.75;
@@ -722,6 +728,140 @@ h3 {
   font-weight: 900;
 }
 
+.surveys {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(37, 99, 235, 0.12), transparent 24rem),
+    radial-gradient(circle at 92% 18%, rgba(15, 118, 110, 0.16), transparent 26rem),
+    linear-gradient(180deg, #ffffff, var(--mint));
+}
+
+.survey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.survey-card {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(26px, 4vw, 42px);
+  overflow: hidden;
+  border: 1px solid rgba(15, 118, 110, 0.16);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 54px rgba(15, 23, 42, 0.09);
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+
+.survey-card::before {
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  right: -80px;
+  top: -88px;
+  border-radius: 50%;
+  background: rgba(236, 253, 245, 0.92);
+  content: "";
+  transition: transform var(--ease), background var(--ease);
+}
+
+.survey-card--industry::before {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.survey-card:hover {
+  transform: translateY(-9px);
+  border-color: rgba(37, 99, 235, 0.26);
+  box-shadow: 0 28px 70px rgba(6, 78, 59, 0.15);
+}
+
+.survey-card:hover::before {
+  transform: scale(1.16);
+}
+
+.survey-card__icon {
+  position: relative;
+  z-index: 1;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border-radius: 24px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--green), var(--teal));
+  box-shadow: 0 16px 34px rgba(15, 118, 110, 0.24);
+}
+
+.survey-card--industry .survey-card__icon {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+}
+
+.survey-card__icon span {
+  font-size: 2.15rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.survey-card__label {
+  margin: 0 0 10px;
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.survey-card h2,
+.survey-card h3 {
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+}
+
+.survey-card h2 {
+  line-height: 1.08;
+}
+
+.survey-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.survey-card__for {
+  padding: 16px 18px;
+  border-radius: 18px;
+  color: var(--text);
+  background: rgba(236, 253, 245, 0.9);
+}
+
+.survey-card--industry .survey-card__for {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.survey-card .btn {
+  margin-top: auto;
+}
+
+.survey-guidance {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 18px 22px;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 20px;
+  text-align: center;
+  color: var(--green);
+  background: rgba(255, 255, 255, 0.82);
+  font-weight: 800;
+}
+
+.surveys--standalone {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+}
+
 .public-first {
   background: var(--cream);
 }
@@ -1090,6 +1230,22 @@ h3 {
     transform: translateY(0);
   }
 
+  .nav-menu--static {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
   .nav-menu a {
     padding: 12px 10px;
   }
@@ -1126,6 +1282,7 @@ h3 {
   }
 
   .respond-grid,
+  .survey-grid,
   .public-grid,
   .stats-grid,
   .footer__grid {
@@ -1180,6 +1337,7 @@ h3 {
   .story-card,
   .problem-card,
   .voice-card,
+  .survey-card,
   .mini-card,
   .stat-card,
   .center-cta {
